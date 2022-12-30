@@ -1,6 +1,6 @@
-set_xmakever("2.7.3")
+set_xmakever("2.7.4")
 
-set_project("ProjectName")
+set_project("LearnSDL")
 set_version("0.0.0")
 
 set_allowedplats("windows", "linux", "macosx")
@@ -10,14 +10,18 @@ add_rules("mode.debug", "mode.release")
 set_languages("cxx20")
 set_optimize("fastest")
 
+add_requires("libsdl release-2.26.1")
+
 local outputdir = "$(mode)-$(os)-$(arch)"
 
-target("ProjectName")
+target("LearnSDL")
     set_kind("binary")
 
-    set_targetdir("build/" .. outputdir .. "/ProjectName/bin")
-    set_objectdir("build/" .. outputdir .. "/ProjectName/obj")
+    set_targetdir("build/" .. outputdir .. "/LearnSDL/bin")
+    set_objectdir("build/" .. outputdir .. "/LearnSDL/obj")
 
-    add_files("ProjectName/src/**.cpp")
-    add_headerfiles("ProjectName/include/**.hpp", "ProjectName/include/**.h")
-    add_includedirs("ProjectName/include/", {public = true})
+    add_files("LearnSDL/src/**.cpp")
+    add_headerfiles("LearnSDL/include/**.hpp", "LearnSDL/include/**.h")
+    add_includedirs("LearnSDL/include/", {public = true})
+
+    add_packages("libsdl")
